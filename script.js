@@ -18,19 +18,19 @@ const fellowship = [
     { name: "Elrond", species: "Elfe", hasSword: true }
 ];
 
-/* Cree un nouveau tableau pour ajouter un ephrase de presetation */
+/* 1. Cree un nouveau tableau pour ajouter une phrase de presentation */
 
 const presentations = fellowship.map(member => `Ce personnage s'appel : ${member.name}.`);
 
 console.log(presentations);
 
-/* Coupe la premiere partie du tableau */
+/* 2. Coupe la premiere partie du tableau */
 
 const cutTab = fellowship.slice(0, 4);
 
 console.log("Les 4 premiers membres :", cutTab);
 
-/* Cree une nouvelle copie du tableau que l'on modifie */
+/* 3. Cree une nouvelle copie du tableau que l'on modifie */
 
 let changeTab = [...fellowship];
 
@@ -58,7 +58,7 @@ let changeTab = [...fellowship];
 
     console.log("Tableau final :", changeTab);
 
-/* Meme chose en retirant Legolas et Gimli  */ 
+/* 4. Meme chose en retirant Legolas et Gimli  */ 
 
 let change2Tab = [...fellowship];
 
@@ -68,7 +68,7 @@ let change2Tab = [...fellowship];
 
     console.log(change2Tab);
 
-/* Tri alphabetique des noms */ 
+/* 5. Tri alphabetique des noms */ 
 
 let alphaTab = [...fellowship];
 
@@ -76,29 +76,72 @@ let alphaTab = [...fellowship];
 
     console.log("Ordre alphabétique :", alphaTab);
 
-/* Vérifier si un membre est gandalf  */ 
+/* 6. Vérifier si un membre est gandalf  */ 
 
-const gandalfIn = fellowship.map(member => member.name === "Gandalf").includes(true); 
+const gandalfIn = fellowship.map(member => member.name === "Gandalf");
 
 console.log(gandalfIn);
 
-/* Verifier si un membre est un homme */ 
+/* 7. Verifier si un membre est un homme */ 
 
 const men = fellowship.some(member => member.species === "Homme");//.include(true);
 
 console.log(men);
 
-/* Verifier les membres avec epees */
+/* 8. Verifier les membres avec epees */
 
 const sword = fellowship.every(member => member.hasSword === true);
 
 console.log(sword);
 
-/* Compter les membres avec des epees */ 
+/* 9. Compter les membres avec des epees */ 
 
 const countSwords = fellowship.reduce((acc, member) => member.hasSword ? acc + 1 : acc, 0);
 
 console.log(countSwords);
 
-/* Longueur du tableau */ 
+/* 10. Longueur du tableau */ 
 
+console.log(fellowship.length);
+
+/* 11. Affiche tout les membres de la communauté */
+
+fellowship.forEach(member => console.log(member.name));
+
+/* 12. Tableau des longueur de nom de chaque membres */
+
+const charName = fellowship.map(member => member.name.length);
+console.log(charName);
+
+/* 13. Trier les cinq premiers */ 
+
+const firstFive = fellowship.slice(0, 5);
+    firstFive.sort((a, b) => a.name.localeCompare(b.name));
+
+console.log(firstFive);
+
+/* 14. Ajouter des membres */ 
+
+let ajouterGollumEtFaramir = [...fellowship];
+
+    ajouterGollumEtFaramir.push({ name: "Gollum", species: "Hobbit", hasSword: false });
+    ajouterGollumEtFaramir.unshift({ name: "Faramir", species: "Homme", hasSword: true });
+
+    console.log(ajouterGollumEtFaramir);
+
+/* 15. Retirer Boromir trier le reste */
+
+let spliceBoromirAndSort = [...fellowship]
+
+    const spliceBoromir = spliceBoromirAndSort.splice(5, 1)
+    
+console.log(spliceBoromirAndSort.sort((a, b) => a.name.localeCompare(b.name)))
+
+/* 16. Verfier si un membre à une epee et si Aragorn est dans le communauté
+
+const UnePersonneAUneEpee = fellowship.some(member => member.hasSword === true);
+UnePersonneAUneEpee = fellowship.includes(Aragorn);
+
+console.log(UnePersonneAUneEpee)
+
+*/
